@@ -1,0 +1,159 @@
+/* Navbar */
+.navbar {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #fefefe;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fdfdfd;
+    transition: all 0.3s ease;
+    text-align: center; /* Căn giữa cả icon và chữ */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #03c7d8;
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+.navbar img {
+    height: 60px;
+    width: auto;
+    margin-right: 15px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Căn giữa logo và chữ theo chiều dọc */
+    gap: 15px;
+}
+
+/* Icon và chữ trong navbar */
+.nav-item a {
+    display: flex;
+    flex-direction: column; /* Icon nằm trên, chữ nằm dưới */
+    align-items: center; /* Căn giữa icon và chữ */
+    text-decoration: none; /* Xóa gạch chân */
+    color: #fdfdfd;
+    transition: all 0.3s ease;
+}
+
+.nav-item i {
+    font-size: 25px; /* Kích thước icon */
+    margin-bottom: 5px; /* Khoảng cách giữa icon và chữ */
+}
+
+.nav-item span {
+    font-size: 14px; /* Kích thước chữ */
+    margin-top: 5px; /* Khoảng cách giữa icon và chữ */
+    line-height: 1.2; /* Khoảng cách dòng chữ */
+}
+
+.nav-item a:hover {
+    color: #03c7d8;
+    transform: scale(1.1); /* Hiệu ứng hover cả icon và chữ */
+}
+
+/* Carousel */
+.carousel-item img {
+    height: 400px; /* Chiều cao hình ảnh carousel */
+    object-fit: contain; /* Hiển thị toàn bộ hình ảnh */
+    width: 100%; /* Đảm bảo hình ảnh phủ đầy chiều rộng */
+    background-color: #000; /* Nền đen nếu ảnh không phủ đủ */
+}
+
+
+
+
+
+.carousel-inner {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Phần giới thiệu */
+section h2 {
+    font-size: 2.5rem;
+    color: #0b1a2a;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: #423e3e;
+}
+
+/* Footer */
+footer a {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+footer a:hover {
+    background-color: #007bff;
+}
+
+/* Sản phẩm */
+.product-card {
+    height: 380px; /* Tăng chiều cao khung */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #ffffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card .card-img-top {
+    height: 230px; /* Tăng chiều cao hình ảnh */
+    object-fit: contain; /* Hiển thị toàn bộ ảnh */
+    width: 100%;
+    background-color: #f8f8f8;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nâng khi hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-card .card-body {
+    text-align: center;
+    padding: 15px;
+}
+
+.product-card .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-card .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.product-card .btn {
+    width: 100%;
+    background-color: #28a745;
+    border: none;
+}
+
+.product-card .btn:hover {
+    background-color: #218838;
+}
+/*Modal*/
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-footer .btn {
+    font-weight: bold;
+    padding: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.modal-footer .btn:hover {
+    transform: translateY(-2px);
+}

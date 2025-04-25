@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - Repiit</title>
+    <link rel="icon" href="../img/logo11_-_Copy-removebg-preview.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        .btn-primary {
+    background-color: #007BFF;
+    color: white;
+    border-radius: 30px; /* Bo góc */
+    transition: all 0.3s ease-in-out; /* Hiệu ứng mượt */
+    padding: 10px 20px; /* Kích thước nút */
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Màu tối hơn khi hover */
+    transform: scale(1.05); /* Phóng nhẹ nút */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+}
+
+.btn-warning {
+    background-color: #FFC107;
+    color: white;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-warning:hover {
+    background-color: #FFA000; /* Màu tối hơn khi hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    padding: 10px ;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62; /* Màu tối hơn khi hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+    </style>
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let user = localStorage.getItem("loggedInUser");
+            if (user) {
+                document.getElementById("userSection").innerHTML = `
+                    <span class="text-white">Chào, ${user}!</span>
+                    <button onclick="logout()" class="btn btn-danger btn-sm ms-2">Đăng xuất</button>
+                `;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem("loggedInUser");
+            alert("Bạn đã đăng xuất!");
+            window.location.href = "index.html";
+        }
+    </script>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div class="logo-container" style="display: flex; align-items: center;">
+                <img src="../img/logo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                <h1 style="font-size: 20px; color: white; margin: 0;">Repiit - Giỏ hàng</h1>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto menu-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Sản phẩm</span>
+                        </a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="checkout.html">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Thanh toán</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fas fa-user"></i>
+                            <span>Đăng nhập</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div id="userSection" class="nav-link"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Giỏ hàng của bạn</h2>
+        <!-- Thông báo giỏ hàng trống -->
+        <div id="empty-cart-message" class="text-center" style="display: none;">
+            <i class="fas fa-shopping-cart fa-3x text-muted"></i>
+            <p class="mt-3 text-muted">Giỏ hàng của bạn hiện trống. <a href="products.html" class="text-primary">Mua ngay</a></p>
+        </div>
+
+        <!-- Bảng giỏ hàng -->
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng cộng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Các dòng sản phẩm sẽ được thêm bằng JavaScript -->
+            </tbody>
+        </table>
+        
+        <!-- Tổng tiền -->
+        <div class="text-end mt-3">
+            <strong>Tổng tiền: </strong><span id="total-price">0 VNĐ</span>
+        </div>
+
+        <!-- Nút điều hướng -->
+        <div class="d-flex justify-content-between mt-4">
+            <a href="products.html" class="btn btn-secondary">Tiếp tục mua sắm</a>
+            <button class="btn btn-warning" onclick="clearCart()">Xóa toàn bộ giỏ hàng</button>
+            <button class="btn btn-primary" onclick="redirectToCheckout()">Thanh toán</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Thông tin cửa hàng -->
+                <div class="col-md-6 text-center text-md-start mb-3">
+                    <h5>Repiit</h5>
+                    <p>Chuỗi phân phối thời trang nam chuẩn hiệu. Hãy liên hệ với chúng tôi để biết thêm thông tin!</p>
+                    <p>Email: contact@k19store.com</p>
+                    <p>Hotline: +84 123 456 789</p>
+                </div>
+    
+                <!-- Liên kết mạng xã hội -->
+                <div class="col-md-6 text-center text-md-end">
+                    <h5>Kết nối với chúng tôi</h5>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i> Facebook</a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i> Instagram</a>
+                    <a href="mailto:contact@k19store.com" class="text-white"><i class="fas fa-envelope fa-lg"></i> Email</a>
+                </div>
+            </div>
+            <hr class="my-3 border-light">
+            <div class="text-center">
+                <p class="mb-0">© 2025 Repiit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>
