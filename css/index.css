@@ -1,4 +1,24 @@
 /* Navbar */
+/* Form tìm kiếm */
+.navbar .search-form {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .navbar .search-form .form-control {
+    width: 200px; /* Điều chỉnh chiều rộng của ô nhập liệu */
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .navbar .search-form .form-control:focus {
+    width: 300px; /* Chiều rộng khi ô nhập liệu được chọn */
+  }
+  
+  .navbar .search-form .btn {
+    margin-left: 5px;
+  }
+  
 .navbar {
     background-color: #f8f9fa;
     border-bottom: 2px solid #fefefe;
